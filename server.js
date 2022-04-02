@@ -3,6 +3,14 @@ const app = express();
 import dotenv from "dotenv";
 dotenv.config();
 import "express-async-errors"; // to handle async errors
+import cors from "cors";
+// cors middleware
+app.use(
+	cors({
+		origin: "*",
+		credentials: true,
+	}),
+);
 
 // db and authenticateUser
 import connectDB from "./db/connect.js";
@@ -19,11 +27,7 @@ import ErrorHandlerMiddleWare from "./middleware/error-handler.js";
 app.use(express.json());
 
 app.get("/", (req, res) => {
-	res
-		.status(200)
-		.send(
-			"Welcome to the Jesse's API. Please use /api/v1/jobs for jobs routes or /api/v1/auth for auth routes",
-		);
+	res.status(200).send("Welcome to the Job Board API.");
 });
 
 // route middleware
@@ -35,7 +39,7 @@ app.use(notFoundMiddleWare);
 app.use(ErrorHandlerMiddleWare);
 
 // port
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 7000;
 
 // initializing server
 // create async function to connect to db and start server

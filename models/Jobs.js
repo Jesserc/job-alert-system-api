@@ -3,15 +3,24 @@ import mongoose from "mongoose";
 const JobsSchema = new mongoose.Schema({
 	companyName: {
 		type: String,
-		required: [true, "Name of Company is required"],
 	},
 	jobTitle: {
 		type: String,
-		required: [true, "Job title is required"],
 	},
 	companyLocation: {
 		type: String,
-		required: [true, "Company Location is required"],
+	},
+	salaryRange: {
+		type: String,
+	},
+	jobType: {
+		type: String,
+	},
+	jobDescription: {
+		type: String,
+	},
+	applicationDeadline: {
+		type: String,
 	},
 	date: {
 		type: Date,
